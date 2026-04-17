@@ -1,0 +1,57 @@
+.body {
+  
+}
+
+#grid-container {
+  /* background-color: black; */
+  display: grid;
+
+  grid-template-areas:
+    "a a a a a a a a a a"
+    "b b b b b b b c c c"
+    "d d d d d d d d d d"
+}
+
+#header-area {
+    margin-top: 50px;
+  grid-area: a;
+  background-color: blue;
+  text-align: center;
+}
+
+#wordsearch-txt{
+    grid-area: b;
+  background-color: blueviolet;
+}
+
+#btn-wordsearch {
+    
+    grid-area: c;
+    background-color: brown;
+}
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  width: 90%;
+  height: 50px;
+  border-radius: 30px;
+  padding-left: 35px;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+
+#displayResults{
+    grid-area:d;
+    background-color: chartreuse;
+}
