@@ -28,11 +28,11 @@ document.addEventListener("DOMContentLoaded", function () {
   function displayWord(result) {
     dateVar = new Date().valueOf();
     btnFavicon.style.display = "unset";
-    console.log(result);
+    //console.log(result);
 
     //New code
     const { word, phonetics, meanings } = result;
-    console.log(word);
+
     const phoneticText =
       phonetics.find((p) => p.text && p.audio) || phonetics[0] || {};
     const audioUrl = phonetics.find((p) => p.audio)?.audio;
@@ -80,16 +80,17 @@ document.addEventListener("DOMContentLoaded", function () {
       meaning: meaning,
     };
 
-    let searchName = wordsFavorite.filter(w=> w[0].name === word)
-    console.log(searchName)
     btnFavicon.addEventListener("click", (e) => {
       if (!e.detail || e.detail == 1) {
-        if (wordsObj.name !== searchName) {
-          wordsFavorite.push(wordsObj);
-          saveFavwords(word);
+        const searchName = wordsFavorite.find((w) => w.name === word);
+        // console.log(searchName)
+        if (searchName) {
+          console.log("Word exists amigo");
         } else {
-          console.log("Word Exists");
+          wordsFavorite.push(wordsObj);
+          saveFavwords(word)
           console.log(wordsFavorite);
+          console.log("word added successfully")
         }
       }
     });
