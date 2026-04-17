@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //const upcomingTable = document.getElementById("favorite-words-section tbody");
   const upcomingTable = document.querySelector("#favorite-words-section tbody");
   const wordTxt = document.getElementById("word-txtbox");
+  const tableFavwords = document.getElementById("fav-words-table");
 
   async function fetchWord(word) {
     try {
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function displayWord(result) {
     dateVar = new Date().valueOf();
     btnFavicon.style.display = "unset";
-    
+
     const { word, phonetics, meanings } = result;
 
     const phoneticText =
@@ -48,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const txtPronounce = document.createElement("h4");
     const audioPronounce = document.createElement("AUDIO");
     const pReults = document.createElement("p");
-    
+
     hName.textContent = word;
     txtPronounce.textContent = phoneticText.text;
     pReults.textContent = meaning;
@@ -86,6 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function saveFavwords() {
+    //upcomingTable.innerHTML = "";
+    tableFavwords.style.display = "unset";
     console.log(wordsFavorite);
 
     let number = 1;
@@ -94,9 +97,9 @@ document.addEventListener("DOMContentLoaded", function () {
       row.innerHTML = `
         <td class="word-fav-name">${number++}</td>
        <td class="word-fav-name">${p.name}</td>
-       <td> <button class="btn btn-danger btn-sm delete-btn" data-id="${p.id}">Delete</button></td>
+       <td> <button class="delete-btn" data-id="${p.id}"> ❌ Delete</button></td>
        `;
-      upcomingTable.appendChild(row);
+      upcomingTable.append(row);
     });
   }
 
@@ -123,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.target.classList.contains("delete-btn")) {
       const index = wordsFavorite.findIndex((t) => t.id === id);
       if (index !== -1) wordsFavorite.splice(index, 1);
-      upcomingTable.innerHTML = "";
+
       saveFavwords();
     }
   });

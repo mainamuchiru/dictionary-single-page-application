@@ -21,7 +21,13 @@
 
 #wordsearch-txt{
     grid-area: b;
+    padding: 20px;
+    
   /* background-color: blueviolet; */
+}
+
+#word-txtbox{
+  padding: 30px;
 }
 
 #btn-wordsearch {
@@ -53,11 +59,13 @@
 
 #displayResults{
     grid-area:d;
-    background-color: chartreuse;
+    /* background-color: chartreuse; */
 }
 
 #display-results{
-  background-color: chartreuse;
+  border-style: solid;
+ border-radius: 40px;
+ border-color: aquamarine;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 20px;
 }
@@ -75,12 +83,21 @@
 /* background-color: blue; */
 }
 
+#btn-favorite i{
+/* background-color: blue; */
+font-size: 35px;
+}
+
 #add-fav-icon{
 font-size: 25px;
 }
 
 #add-fav-icon :hover{
 background-color: red;
+}
+
+#fav-words-table{
+  display: none;
 }
 
 
