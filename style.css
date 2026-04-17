@@ -15,19 +15,19 @@
 #header-area {
     margin-top: 50px;
   grid-area: a;
-  background-color: blue;
+  /* background-color: blue; */
   text-align: center;
 }
 
 #wordsearch-txt{
     grid-area: b;
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
 }
 
 #btn-wordsearch {
     
     grid-area: c;
-    background-color: brown;
+    /* background-color: brown; */
 }
 .search-container {
   position: relative;
@@ -55,3 +55,33 @@
     grid-area:d;
     background-color: chartreuse;
 }
+
+#display-results{
+  background-color: chartreuse;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+}
+
+#display-results h2{
+  font-size: 40px;
+}
+
+#btn-favorite{
+  display: none;
+ /* background-color: white; */
+}
+
+#btn-favorite i:hover{
+/* background-color: blue; */
+}
+
+#add-fav-icon{
+font-size: 25px;
+}
+
+#add-fav-icon :hover{
+background-color: red;
+}
+
+
+
