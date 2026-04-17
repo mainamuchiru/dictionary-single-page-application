@@ -1,14 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   const externalApi = "https://api.dictionaryapi.dev/api/v2/entries/en/";
   const wordsFavorite = [];
-  let dateVar = new Date().getUTCMilliseconds();
+  let dateVar = new Date().getSeconds();
 
   const btnFetch = document.getElementById("btn-wordsearch");
   const displayResults = document.getElementById("display-results");
   const favoritesAdd = document.getElementById("add-favourites");
   const errorDiv = document.getElementById("error-message");
   const btnFavicon = document.getElementById("btn-favorite");
-  const upcomingTable = document.getElementById("fav-words-table tbody");
+  //const upcomingTable = document.getElementById("favorite-words-section tbody");
+  const upcomingTable = document.querySelector("#favorite-words-section tbody");
   const wordTxt = document.getElementById("word-txtbox");
 
   async function fetchWord(word) {
@@ -28,9 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function displayWord(result) {
     dateVar = new Date().valueOf();
     btnFavicon.style.display = "unset";
-    //console.log(result);
-
-    //New code
+    
     const { word, phonetics, meanings } = result;
 
     const phoneticText =
@@ -45,22 +44,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const partOfSpeech = meanings[0]?.partOfSpeech || "N/A";
     const example = meanings[0]?.definitions[0]?.example || "N/A";
 
-    // const wordHeader = result[0].word;
-    // const wordPronounce = result[0].phonetic;
-    // let wordAudio = result[0].phonetics[0].audio;
-    // const wordMeaning = result[0].meanings[0].definitions[0].definition;
-
-    // if (wordAudio != "undefined") {
-    //   console.log(`Audio does exist for the word: ${wordHeader}`)
-    // } else{
-    //     console.log(`Audio does not exist for the word: ${wordHeader}`)
-    // }
-
     const hName = document.createElement("h2");
     const txtPronounce = document.createElement("h4");
     const audioPronounce = document.createElement("AUDIO");
     const pReults = document.createElement("p");
-    //const
+    
     hName.textContent = word;
     txtPronounce.textContent = phoneticText.text;
     pReults.textContent = meaning;
@@ -88,16 +76,28 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log("Word exists amigo");
         } else {
           wordsFavorite.push(wordsObj);
-          saveFavwords(word)
-          console.log(wordsFavorite);
-          console.log("word added successfully")
+          //   saveFavwords(wordsFavorite)
+          saveFavwords();
+          //   console.log(wordsFavorite);
+          console.log("word added successfully");
         }
       }
     });
   }
 
   function saveFavwords() {
-    // upcomingTable.innerHTML= "";
+    console.log(wordsFavorite);
+
+    let number = 1;
+    const row = document.createElement("tr");
+    wordsFavorite.forEach((p) => {
+      row.innerHTML = `
+        <td class="word-fav-name">${number++}</td>
+       <td class="word-fav-name">${p.name}</td>
+       <td> <button class="btn btn-danger btn-sm delete-btn" data-id="${p.id}">Delete</button></td>
+       `;
+      upcomingTable.appendChild(row);
+    });
   }
 
   btnFetch.addEventListener("click", async (event) => {
@@ -115,5 +115,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     wordTxt.value = "";
     wordTxt.focus();
+  });
+
+  document.addEventListener("click", function (e) {
+    const id = Number(e.target.dataset.id);
+
+    if (e.target.classList.contains("delete-btn")) {
+      const index = wordsFavorite.findIndex((t) => t.id === id);
+      if (index !== -1) wordsFavorite.splice(index, 1);
+      upcomingTable.innerHTML = "";
+      saveFavwords();
+    }
   });
 });
