@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const externalApi = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+  const Dictionary_External_Api = "https://api.dictionaryapi.dev/api/v2/entries/en/";
   const wordsFavorite = [];
   let dateVar = new Date().getSeconds();
   let currentWordObj = null;
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     btnFavicon.style.display = "none";
 
     try {
-      const response = await fetch(`${externalApi}${word}`);
+      const response = await fetch(`${Dictionary_External_Api}${word}`);
 
       if (!response.ok) {
         throw new Error("Word not found");
