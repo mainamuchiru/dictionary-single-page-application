@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let dateVar = new Date().getSeconds();
   let currentWordObj = null;
 
-  const btnFetch = document.getElementById("btn-wordsearch");
+  const searchForm = document.getElementById("search-form");
+  
   const displayResults = document.getElementById("display-results");
   const errorDiv = document.getElementById("erro-section");
   const btnFavicon = document.getElementById("btn-favorite");
@@ -108,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  btnFetch.addEventListener("click", async (event) => {
+  searchForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const word = wordTxt.value.trim().toLowerCase();
 
