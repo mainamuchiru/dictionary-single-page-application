@@ -1,104 +1,171 @@
-.body {
-  
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+body {
+  background-color: #f0f2f5;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #222;
+  font-size: 22px;
+}
+
+/* ---- Header ---- */
+#header-area .jumbotron {
+  background-color: #2c3e50;
+  color: #fff;
+  margin-bottom: 0;
+  padding: 2rem 1rem;
+  border-radius: 0;
+}
+
+#header-area h1 {
+  font-size: 3.8rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+/* ---- Grid layout ---- */
 #grid-container {
-  /* background-color: black; */
   display: grid;
-
   grid-template-areas:
-    "a a a a a a a a a a"
-    "b b b b b b b c c c"
-    "d d d d d d d d d d"
+    "a"
+    "b"
+    "c";
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
 }
 
-#header-area {
-    margin-top: 50px;
-  grid-area: a;
-  /* background-color: blue; */
-  text-align: center;
+/* ---- Search form ---- */
+#search-form {
+  grid-area: b;
+  display: flex;
+  gap: 10px;
+  margin: 28px 0 20px;
 }
 
-#wordsearch-txt{
-    grid-area: b;
-    padding: 20px;
-    
-  /* background-color: blueviolet; */
+#word-txtbox {
+  flex: 1;
+  padding: 14px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  outline: none;
+  transition: border-color 0.2s;
 }
 
-#word-txtbox{
-  padding: 30px;
+#word-txtbox:focus {
+  border-color: #2c3e50;
 }
 
 #btn-wordsearch {
-    
-    grid-area: c;
-    /* background-color: brown; */
-}
-.search-container {
-  position: relative;
-}
-
-.search-input {
-  width: 90%;
-  height: 50px;
-  border-radius: 30px;
-  padding-left: 35px;
+  padding: 14px 26px;
+  background-color: #2c3e50;
+  color: #fff;
   border: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.search-icon {
-  position: absolute;
-  top: 50%;
-  left: 15px;
-  transform: translateY(-50%);
-  color: #888;
+#btn-wordsearch:hover {
+  background-color: #3d5166;
 }
 
-
-#displayResults{
-    grid-area:d;
-    /* background-color: chartreuse; */
+/* ---- Results section ---- */
+#results-section {
+  grid-area: c;
 }
 
-#display-results{
-  border-style: solid;
- border-radius: 40px;
- border-color: aquamarine;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 20px;
+#display-results {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 24px 28px;
+  font-family: Georgia, serif;
+  font-size: 1.7rem;
+  min-height: 60px;
 }
 
-#display-results h2{
-  font-size: 40px;
+#display-results h2 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  color: #2c3e50;
 }
 
-#btn-favorite{
+#display-results p {
+  font-size: 1.6rem;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+/* ---- Error / info messages ---- */
+#result-sec,
+#erro-section {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: #c0392b;
+}
+
+/* ---- Favourite button ---- */
+#add-favourites {
+  margin-top: 16px;
+}
+
+#btn-favorite {
   display: none;
- /* background-color: white; */
+  padding: 12px 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
-#btn-favorite i:hover{
-/* background-color: blue; */
+#btn-favorite:hover {
+  background-color: #f9f9f9;
+  border-color: #aaa;
 }
 
-#btn-favorite i{
-/* background-color: blue; */
-font-size: 35px;
+#btn-favorite i {
+  font-size: 2rem;
 }
 
-#add-fav-icon{
-font-size: 25px;
+
+/* ---- Favourites table ---- */
+#favorite-words-section {
+  margin-top: 30px;
 }
 
-#add-fav-icon :hover{
-background-color: red;
-}
-
-#fav-words-table{
+#fav-words-table {
   display: none;
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  font-size: 1.3rem;
 }
 
+#fav-words-table thead {
+  background-color: #2c3e50;
+  color: #fff;
+}
 
+#fav-words-table thead th {
+  padding: 12px 16px;
+  font-weight: 600;
+}
+
+#fav-words-table tbody tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+#fav-words-table tbody td {
+  padding: 10px 16px;
+  vertical-align: middle;
+}
 
