@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let dateVar = new Date().getSeconds();
   let currentWordObj = null;
 
-  const searchForm = document.getElementById("search-form");
+  const searchFormtosearch = document.getElementById("search-form");
   
   const displayResults = document.getElementById("display-results");
   const errorDiv = document.getElementById("erro-section");
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  searchForm.addEventListener("submit", async (event) => {
+  searchFormtosearch.addEventListener("submit", async (event) => {
     event.preventDefault();
     const word = wordTxt.value.trim().toLowerCase();
 
